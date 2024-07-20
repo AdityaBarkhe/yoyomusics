@@ -1,0 +1,186 @@
+body{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #000000;
+}
+
+#backgroundImage {
+    background-image: url(posters/Desi\ Kalakar.jpeg);
+    margin-left: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 83.5%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px); /* Optional: Add a blur effect to the background */
+    pointer-events: none;
+    z-index: -1;
+    transition: transform 0.1;
+}
+
+/* Navigation bar */
+.navbar{
+    height: 100%;
+    width: 255px;
+    position: fixed;
+    /* left: -250%; */
+    background-color:#000000;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: 0.5s;
+    /* border-right: 1px solid rgb(255, 255, 255); */
+    z-index: 10000;
+}
+
+.nav-content{
+    padding: 16px;
+}
+
+.navbar:hover{  
+    box-shadow: -3px -3px 10px #6359f8, 0 -3px 3px 0px #9c32e2,
+    3px -3px 10px #f36896, 3px 0 5px #ff0b0b, 3px 3px 3px 0px #ff5500,
+    0 3px 0px 0px #ff9500, -3px 3px 3px 0px #ffb700;
+}
+
+.logo img{
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    display: block;
+    filter: invert();
+    color: white;
+}
+
+.navbar a{
+    padding: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    transition: 0.3s;
+    margin: 2px;
+}
+
+.navbar a div{
+    margin-right: 20px;
+}
+
+.navbar a:hover{
+    /* color: white; */
+    /* text-decoration: underline; */
+    translate: -2px; 
+    background-color: rgb(35, 35, 35);
+    transition: translate 0.3s;
+    /* border: 1px solid white;
+    border-radius: 2px; */
+    box-shadow: -5px -5px 10px #6359f8, 0 -5px 5px 0px #9c32e2,
+    5px -5px 10px #f36896, 5px 0 5px #ff0b0b, 5px 5px 5px 0px #ff5500,
+    0 5px 0px 0px #ff9500, -5px 5px 5px 0px #ffb700;
+} 
+
+/* Menu */
+/* .menu-icon{
+    cursor: pointer;
+    padding: 10px;
+    background-color: black;
+} */
+
+/* .line {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+} */
+
+/* Header lines */
+.content{
+    margin-left: 250px;
+    /* margin: auto; */
+    width: 30%;
+    padding: 100px 60px 0;
+    transition: margin-left 0.5s;
+}
+
+.content p{
+    font-size: 18px;
+}
+
+/* Screen Buttons */
+.buttons{
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    margin: 12% 400px;
+    /* border: 2px solid black; */
+}
+
+.buttons a{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px;
+    margin: 10px;
+    background-color: rgba(240, 248, 255, 0.466);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.buttons a:hover{
+    color: white;
+    background-color: black;
+    border: 2px solid #DFBDD6;
+    transition: box-shadow 0.1s;
+    box-shadow: -3px -3px 10px #6359f8, 0 -3px 3px 0px #9c32e2,
+    3px -3px 10px #f36896, 3px 0 5px #ff0b0b, 3px 3px 3px 0px #ff5500,
+    0 3px 0px 0px #ff9500, -3px 3px 3px 0px #ffb700;
+}
+
+.buttons i {
+    margin-right: 10px;
+}
+
+/* Local 
+.octagonal-border{
+    /* clip-path: polygon(5% 0%, 75% -75%, 100% 5%, 100% 75%, 100% 95%, 5% 100%, 0% 75%, 0% 25%); 
+    color: black;
+}
+
+.octagonal-border:hover{
+    translate: -2px; 
+    background-color: rgb(62, 62, 62);
+    transition: translate 0.3s;
+} */
+
+
+/* CSS of about section */
+
+.about {
+    margin-left: 260px;
+    font-size: 18px;
+    color: white;
+}
+
+.about h2{
+    /* display: block; */
+    margin: auto;
+    width: fit-content;
+    /* border: 2px solid red; */
+    padding: 20px;
+}
+
+.about img{
+    /* margin-left: 15%; */
+    display: block;
+    margin: auto;
+    height: 50vh;
+    filter: invert();
+}
+
+.aboutSec{
+    text-align: center;
+    padding: 10px;
+}

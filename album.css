@@ -1,0 +1,760 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+body {
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: purple;
+  border-radius: 20px;
+}
+
+/* Main styles */
+section {
+  padding: 20px;
+  z-index: 1;
+}
+
+/* Albums */
+.albums {
+  margin-left: 250px;
+  /* margin-bottom: 20px; */
+  /* display: flex; */
+  /* cursor: pointer; */
+  padding: 20px;
+  /* border: 2px solid red; */
+  transition: margin-left 0.3s;
+  border-radius: 2px;
+}
+
+.albums:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: -3px -3px 10px #6359f8, 0 -3px 3px 0px #9c32e2,
+    3px -3px 10px #f36896, 3px 0 5px #ff0b0b, 3px 3px 3px 0px #ff5500,
+    0 3px 0px 0px #ff9500, -3px 3px 3px 0px #ffb700;
+  transition: box-shadow 0.3s;
+}
+
+.name {
+  display: flex;
+  /* border: 2px solid #ffffff43; */
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.name:hover {
+  background-color: rgba(255, 255, 255, 0.128);
+  border: 0.1px solid #ffffff43;
+}
+
+/* Album names */
+.album-name {
+  /* border: 2px solid yellow; */
+  flex-grow: 2;
+}
+
+.director {
+  /* border: 2px solid purple; */
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Songs class styles */
+.songs {
+  /* margin-left: 250px; */
+  /* margin-bottom: 20px; */
+  display: flex;
+  /* width: 100%; */
+  /* padding: 30px; */
+  gap: 4rem;
+  /* border: 2px solid red; */
+  transition: margin-left 0.3s;
+}
+
+/* Each item styles */
+.song {
+  height: 150px;
+  width: 255px;
+  /* margin: 30px; */
+  margin-top: 30px;
+  margin-bottom: 20px;
+  /* padding: 20px; */
+  /* border: 2px solid blue; */
+  cursor: pointer;
+
+  /* position: relative; */
+  display: flex;
+  /* flex-direction: column; */
+
+  /* background-image: url(Home1.jpeg); */
+  background-size: cover;
+  /* background-position: center; */
+}
+
+.song:hover .playHover {
+  display: block;
+}
+
+.song:hover {
+  box-shadow: inset -3px -3px 10px #6359f8, inset 0 -3px 3px 0px #9c32e2,
+    inset 3px -3px 10px #f36896, inset 3px 0 5px #ff0b0b,
+    inset 3px 3px 3px 0px #ff5500, inset 0 3px 0px 0px #ff9500,
+    inset -3px 3px 3px 0px #ffb700;
+  transition: box-shadow 0.3s;
+}
+
+.playHover {
+  position: absolute;
+  display: none;
+  scale: 1.4;
+  margin-top: 4.5%;
+  margin-left: 7.5%;
+}
+
+.song-name {
+  position: absolute;
+  padding-left: 10px;
+  margin-top: 7%;
+  color: #fff;
+  text-shadow: black;
+}
+
+.more {
+  height: 150px;
+  min-width: 100px;
+  margin: 40px;
+  /* padding: 20px; */
+  border: 2px solid blue;
+  cursor: pointer;
+
+  /* position: relative; */
+  display: flex;
+
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.director:hover .hidden-songs {
+  display: flex;
+}
+
+.hidden-songs {
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+/* Arrow */
+.arrow {
+  border: 2px solid red;
+  margin-top: 200px;
+}
+
+.line {
+  color: white;
+  width: 10px;
+  height: 3px;
+  background-color: #fff;
+  margin-left: 250px;
+  margin-bottom: 2px;
+  /* margin: 6px 0; */
+  /* transform: matrix(1,1,1,0,0,0); */
+  transform: rotate(45deg);
+}
+
+.line2 {
+  color: white;
+  width: 10px;
+  height: 3px;
+  background-color: #fff;
+  margin-left: 250px;
+  margin-bottom: 2px;
+  /* margin: 6px 0; */
+  /* transform: matrix(1,-1,1,0,0,0); */
+  transform: rotate(-45deg);
+}
+
+/* Hidden Player Properties */
+
+.hidden-player {
+  display: none;
+  position: fixed;
+
+  /* To center this division */
+  top: 50%;
+  left: 58.5%;
+  /* margin-left: 250px; */
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 100%;
+
+  background-color: #000000;
+  padding: 20px;
+  z-index: 1000;
+
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* border: 2px solid red; */
+  /* filter: blur(5px); */
+  /* object-fit: cover; */
+}
+
+.close {
+  /* color: rgb(0, 0, 0); */
+  color: rgb(255, 255, 255);
+  /* right: 0; */
+  zoom: 1.4;
+  cursor: pointer;
+  display: inline;
+  /* border: 2px solid blue; */
+}
+
+.songImg {
+  position: absolute; /* Position the overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scale: 1.4;
+  /* zoom: 10; */
+  /* background: #000; */
+  background-size: cover;
+  background-position: center;
+  background-image: url("posters/YoYo.jpeg");
+  filter: blur(7px); /* Optional: Add a blur effect to the background */
+  background-color: #fff;
+  pointer-events: none;
+  z-index: -100;
+  transition: transform 0.1;
+}
+
+/* Disc Player */
+#disc-play {
+  display: none;
+  height: 85%;
+  /* border: 2px solid orange; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-color: #000; */
+  /* filter: blur(2px); */
+}
+
+#disc-play::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position the overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-image: url('Birthday\ Bash.jpg'); /* Set the background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px); /* Apply blur effect to the overlay */
+  z-index: -1; /* Ensure the overlay stays behind the content */
+}
+
+.disc-container {
+  width: 100%;
+  height: 100%;
+  border: 15px solid transparent; /* Set initial border color to transparent */
+  /* border-color: rgb(144, 255, 84); */
+  /* border-radius: 50%; */
+  position: relative;
+  margin: 0px auto;
+  /*animation: pulse 1s infinite alternate; /* Add pulsating effect */
+  z-index: -1;
+}
+
+/* 
+  @keyframes pulse {
+    0% {
+      border-width: 10px;
+    }
+    100% {
+      border-width: 15px;
+    }
+  } */
+
+.disc {
+  width: 550px;
+  height: 550px;
+  background: url("posters/YoYo.jpeg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate-disc 2s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disc img{
+  width: 250px;
+  height: 250px;
+  /* display: block;
+  /* margin: auto; */
+  filter: invert(); 
+  border: 5px solid white;
+  border-radius: 50%;
+  filter: drop-shadow(5px 5px 10px white);
+}
+
+.disc-outline {
+  width: 570px;
+  height: 570px;
+  border: 10px solid transparent; /* Set initial border color to transparent */
+  border-radius: 50%;
+  border-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Gradient Colors */
+  box-shadow: inset -5px -5px 10px #6359f8, inset 0 -5px 5px 0px #9c32e2,
+    inset 5px -5px 10px #f36896, inset 5px 0 5px #ff0b0b,
+    inset 5px 5px 5px 0px #ff5500, inset 0 5px 0px 0px #ff9500,
+    inset -5px 5px 5px 0px #ffb700;
+}
+
+/* .disc-outline::before {
+  content: "";
+  width: 570px;
+  height: 570px;
+  border: 16px solid transparent; /* Set initial border color to transparent */
+/* border-radius: 50%; */
+/* border-color: rgb(255, 255, 0); 
+  box-shadow: -5px -5px 10px #6359f8, 0 -5px 5px 0px #9c32e2,
+    5px -5px 10px #f36896, 5px 0 5px #ff0b0b, 5px 5px 5px 0px #ff5500,
+    0 5px 0px 0px #ff9500, -5px 5px 5px 0px #ffb700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+.disc-circle {
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* color: #000; */
+  border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.rotating {
+  animation: rotate-disc 5s linear infinite;
+}
+
+@keyframes rotate-disc {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  /* display: none; */
+  /*background-color: rgba(0, 0, 0, 0.5); /* Initial color and opacity */
+  /* Gradient colors */
+  /* box-shadow: -3px -3px 10px #6359f8, 0 -3px 3px 0px #9c32e2,
+    3px -3px 10px #f36896, 3px 0 5px #ff0b0b, 3px 3px 3px 0px #ff5500,
+    0 3px 0px 0px #ff9500, -3px 3px 3px 0px #ffb700;
+     */
+  /* box-shadow: inset -3px -3px 10px black, inset -3px 3px 3px 0px white; */
+}
+
+#circle1 {
+  width: 720px;
+  height: 720px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid rgb(115, 255, 0);
+  /* animation: colorChange 5s linear infinite; */
+  display: none;
+}
+
+#circle2 {
+  width: 640px;
+  height: 640px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 15px solid #a63cda;
+  z-index: 10;
+  animation: colorChange 5s linear infinite;
+}
+
+#circle3 {
+  width: 780px;
+  height: 780px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 20px solid rgb(226, 43, 43);
+  display: none;
+}
+
+#circle4 {
+  width: 830px;
+  height: 830px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 8px solid rgb(208, 226, 43);
+  display: none;
+}
+
+#circle5 {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid blueviolet;
+  animation: colorChange 5s linear infinite;
+}
+
+#circleP {
+  /* width: 100px;
+  height: 100px; */
+  /* border: 4px solid rgb(255, 255, 255); */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate-disc 2s linear infinite;
+}
+
+.bar {
+  position: absolute;
+  /* background-color: black; */
+  background-color: #a63cda;
+  /* border: .1px solid white; */
+  width: 6px;
+  bottom: 0;
+  transform-origin: bottom;
+  z-index: -1;
+  /* animation: colorChange 2s linear infinite; */
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: white;
+    /* transform: rotate(0deg) translateY(-340px); */
+  }
+  100% {
+    /* filter: hue-rotate(360deg); */
+    background-color: black;
+    /* transform: rotate(360deg) translateY(-340px); */
+  }
+}
+
+/* Side bars */
+#left-bar {
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  background-color: #959595;
+  /* filter: blur(2px); */
+  /* animation: colorChange 2s linear infinite; */
+}
+
+#right-bar {
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  background-color: #959595;
+  /* animation: colorChange 2s linear infinite; */
+}
+
+#song-title {
+  position: absolute;
+  right: 20px;
+  margin-top: -120px;
+  font-size: 50px;
+  color: #000;
+  text-shadow: 2px 2px 20px white, -2px -2px 20px white;
+  /* box-shadow: inset -5px -5px 10px #6359f8, inset 0 -5px 5px 0px #9c32e2,
+    inset 5px -5px 10px #f36896, inset 5px 0 5px #ff0b0b,
+    inset 5px 5px 5px 0px #ff5500, inset 0 5px 0px 0px #ff9500,
+    inset -5px 5px 5px 0px #ffb700; */
+}
+
+/** Bottom Player **/
+
+/* Time Bar Line for music */
+.TimeLine {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  height: 4%;
+  width: 100%;
+  padding: 4px;
+  /* margin-left: 0; */
+  /* border: 2px solid black; */
+  backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.2);
+  /* border: .1px solid gray; Glass effects */
+  border-radius: 2px;
+}
+
+.TimeLine span {
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+  width: 50px;
+  /* border: 2px solid red; */
+  /* letter-spacing: ; */
+}
+
+.timeBar {
+  width: 45%;
+  height: 2px;
+  /* border: 2px solid red; */
+  background: rgb(255, 255, 255);
+  flex-grow: 2;
+  margin: 0 15px;
+}
+
+#movingBar {
+  /* position: absolute; */
+  background: purple;
+  /* margin-top: -22px; */
+  width: 0%;
+  height: 100%;
+  /* top: 0; */
+  transition: 3s linear;
+}
+
+#movingCircle {
+  position: absolute;
+  margin-top: -6.5px;
+  margin-left: -6.5px;
+  width: 10px;
+  height: 10px;
+  background: purple;
+  border-radius: 50%;
+  transition: 3s linear;
+}
+
+#movingCircle::before {
+  content: "";
+  position: absolute;
+  margin-top: -6.5px;
+  margin-left: -6.5px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid purple;
+  box-shadow: inset 0 0 5px purple;
+  border-radius: 50%;
+  transition: 3s linear;
+}
+
+.timeBar input {
+  position: absolute;
+  width: 89%;
+  margin-left: -1px;
+  margin-top: -6.5px;
+  cursor: pointer;
+  z-index: 2000;
+  opacity: 0;
+}
+
+/* Player Controls */
+
+.player-controls {
+  height: 4%;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(2px);
+  /* background: rgba(255, 255, 255, 0.2); */
+  border-radius: 4px;
+  color: #000;
+
+  background-image: linear-gradient(to right, white, black, white);
+  /* border: 2px solid red; */
+  /* margin-left: 250px; */
+  /* width: 80%; */
+}
+
+.left-corner {
+  display: flex;
+  gap: 60px;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+#playList {
+  zoom: 1.2;
+  cursor: pointer;
+}
+
+#volume {
+  zoom: 1.4;
+  cursor: pointer;
+}
+
+/* Music Controls */
+
+.controls {
+  font-size: 20px;
+  /* color: white; */
+  margin: 50px;
+  display: flex;
+  gap: 30px;
+  color: rgb(255, 255, 255);
+  /* border: 2px solid black; */
+  /* filter: invert(100%); */
+}
+
+#back {
+  zoom: 1.5;
+  cursor: pointer;
+}
+
+#forward {
+  zoom: 1.5;
+  cursor: pointer;
+}
+
+#playButton {
+  display: inline;
+  /* margin: auto; */
+  /* width: fit-content; */
+  border: none;
+  cursor: pointer;
+  zoom: 1.5;
+  /* background-color: #000; */
+  /* color: #000; */
+  /* color: #000000; */
+}
+
+.right-corner {
+  display: flex;
+  gap: 60px;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+#mode {
+  cursor: pointer;
+  zoom: 1.3;
+}
+
+#full_screen {
+  cursor: pointer;
+  zoom: 1.3;
+}
+
+
+/** Bass Player Styles **/
+
+#bassPlay {
+  /* display: none; */
+  height: 85%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* border: 2px solid blue; */
+}
+
+#bassImg {
+  /* display: none; */
+  position: relative; /* Position the overlay */
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 450px;
+  /* scale: 1.4; */
+  transform: translate(-50%, -50%);
+  /* zoom: 10; */
+  /* background: #000; */
+  background-size: cover;
+  /* background-position: center; */
+  background-image: url("posters/YoYo.jpeg");
+  /*filter: blur(7px); /* Optional: Add a blur effect to the background */
+  border: 3px solid #a63cda;
+  background-color: #fff;
+  pointer-events: none;
+  z-index: 100;
+  transition: transform 0.1;
+  display: flex;
+  align-items: flex-end;
+  /*justify-items: flex-end; */
+}
+
+#bassImg img{
+  position: absolute;
+  right: 0;
+  filter: invert();
+  width: 200px;
+  height: 200px;
+}
+
+#rectangle {
+  width: 800px;
+  height: 300px;
+  /* border: 2px solid #ffffff; */
+  /* border-radius: 50%; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bassBar1{
+  position: absolute;
+  /* background-color: black; */
+  background-color: #a63cda;
+  border: .1px solid white;
+  width: 8px;
+  bottom: 390px;
+  transform-origin: bottom;
+  z-index: -1;
+  /* animation: colorChange 2s linear infinite; */
+  
+}
+
+.bassBar2{
+  position: absolute;
+  /* background-color: black; */
+  background-color: #a63cda;
+  border: .1px solid white;
+  width: 8px;
+  top: 320px;
+  transform-origin: bottom;
+  z-index: -1;
+  /* animation: colorChange 2s linear infinite; */
+}

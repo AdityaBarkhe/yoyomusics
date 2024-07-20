@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="album.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font sheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="albumFunctions.js"></script>
+    <script src="albums.js"></script>
+    <link rel="icon" href="Logo.png">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="Logo.png" alt="">
+        </div>
+        <div class="nav-content">
+            <a href="index.html" class="octagonal-border"><div class="bi-house-fill"></div>Home</a>
+            <a href="album.html" class="octagonal-border"><div class="bi-music-note-list"></div>Album</a>
+            <a href="local.html" class="octagonal-border"><div class="bi-file-music-fill"></div>Local</a>
+            <a href="about.html" class="octagonal-border"><div class="bi-person-circle"></div>About Us</a>
+       </div>
+    </div>
+
+    <section>
+
+        <!-- Add 1 more song to the each album -->
+
+        <!-- Popular Album -->
+        <div class="albums">
+
+            <div class="name">
+                <div class="border"></div>
+                <div class="album-name" onclick="moreSongs(this)">Popular</div>
+                <!-- <a href="album1.html" class="director bi-chevron-right"></a> -->
+                <div class="director bi-chevron-right" onclick="moreSongs(this)"></div>
+            </div>
+
+            <div class="songs">
+                <div class="song" id="1">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art" > -->
+                    <h3 class="song-name">Love Dose</h3>
+                </div>
+
+                <div class="song" id="2">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img  class="img-s" alt="Album art" > -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="3">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art"> -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="4">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art"> -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <!-- <a href="album1.html" class="more">More</a> -->
+            </div>
+
+            <div class="songs hidden-songs">
+                <div class="song" id="5">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="6">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="7">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="8">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other albums -->
+        <!-- Album Honey 3.0 -->
+
+        <div class="albums">
+
+            <div class="name">
+                <div class="border"></div>
+                <div class="album-name" onclick="moreSongs(this)">Honey 3.0</div>
+                <!-- <a href="album1.html" class="director bi-chevron-right"></a> -->
+                <div class="director bi-chevron-right" onclick="moreSongs(this)"></div>
+            </div>
+
+            <div class="songs">
+                <div class="song" id="9">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art" > -->
+                    <h3 class="song-name">Love Dose</h3>
+                </div>
+
+                <div class="song" id="10">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img  class="img-s" alt="Album art" > -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="11">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art"> -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="12">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art"> -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <!-- <a href="album1.html" class="more">More</a> -->
+            </div>
+
+            <div class="songs hidden-songs">
+                <div class="song" id="13">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="14">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="15">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="16">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Older -->
+        <div class="albums">
+
+            <div class="name">
+                <div class="border"></div>
+                <div class="album-name" onclick="moreSongs(this)">Older Albums</div>
+                <!-- <a href="album1.html" class="director bi-chevron-right"></a> -->
+                <div class="director bi-chevron-right" onclick="moreSongs(this)"></div>
+            </div>
+
+            <div class="songs">
+                <div class="song" id="17">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art" > -->
+                    <h3 class="song-name">Love Dose</h3>
+                </div>
+
+                <div class="song" id="18">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img  class="img-s" alt="Album art" > -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="19">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art"> -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="20">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <!-- <img class="img-s" alt="Album art"> -->
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <!-- <a href="album1.html" class="more">More</a> -->
+            </div>
+
+            <div class="songs hidden-songs">
+                <div class="song" id="21">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="22">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="23">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+
+                <div class="song" id="24">
+                    <div class="bi-play-circle-fill playHover"></div>
+                    <h3 class="song-name"></h3>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hidden-player" id="songdetails">
+            <!-- Main Player -->
+            <div class="close" onclick="closeSong()">&times;</div>
+            <img class="songImg">
+            <div class="bar" id="left-bar"></div>
+            <div class="bar" id="right-bar"></div>
+            <div id="disc-play">
+                <div class="disc-container">
+                    <div id="circle1" class="circle"></div>
+                    <div id="circle2" class="circle"></div>
+                    <div id="circle3" class="circle"></div>
+                    <div id="circle4" class="circle"></div>
+                    <div id="circle5" class="circle"></div>
+                    <div id="disc" class="disc"><img src="Logo.png" alt=""></div>
+                    <div class="disc-circle"></div>
+                    <div class="disc-outline"></div>
+                    <div id="music-bar" class="music-bar"></div>
+                    <div id="circleP" class="circle"></div>
+                </div>
+            </div>
+
+            <div id="bassPlay">
+                <div id="bassImg"><img src="Logo.png"></div>
+                <div id="rectangle"></div>
+                <!-- <div class="bassBar1"></div>
+            <div class="bassBar2"></div> -->
+            </div>
+
+            <!-- Bar Line  -->
+            <div class="TimeLine">
+                <div id="song-title"></div>
+                <span id="startTime">00:00</span>
+                <div class="timeBar">
+                    <input type="range" id="seek" min="1" max="100">
+                    <div id="movingBar"></div>
+                    <div id="movingCircle"></div>
+                </div>
+                <span id="endTime">00:00</span>
+            </div>
+
+            <div class="player-controls">
+                <div class="left-corner">
+                    <div id="playList" class="bi-music-note-list"></div>
+                    <div id="volume" class="bi-volume-up-fill"></div>
+                </div>
+                <div class="controls">
+                    <div id="back" class="bi-skip-start-fill"></div>
+                    <div id="playButton" class="bi-play-circle-fill"></div>
+                    <div id="forward" class="bi-skip-end-fill"></div>
+                </div>
+                <div class="right-corner">
+                    <div id="mode" class="bi-disc-fill"></div>
+                    <!-- <div id="mode" class="bi-bar-chart-line-fill"></div> -->
+                    <div id="full_screen" class="bi-aspect-ratio-fill"></div>
+                </div>
+                <!-- <audio id="audioPlayer" controls></audio> -->
+            </div>
+
+            <!-- <audio src="" id="audio"></audio> -->
+        </div>
+
+</body>
+
+</html>

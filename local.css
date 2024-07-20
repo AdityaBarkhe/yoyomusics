@@ -1,0 +1,56 @@
+body{
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #000000;
+  font-size: 10px;
+}
+
+#musicInput {
+  position: absolute;
+  right: 20px;
+  margin-top: -120px;
+  font-size: 30px;
+  width: 175px;
+  /* border-radius: 2px; */
+
+  /* color: rgb(0, 0, 0); */
+  border: 2px solid rgb(0, 0, 0);
+  padding: 0 10px;
+  font-family: "Poppins", sans-serif;
+  /* margin: 10px; */
+  background-color: rgba(240, 248, 255, 0.466);
+  border-radius: 5px;
+  text-align: center;
+
+  color: #000;
+  /* text-shadow: 2px 2px 10px white, -2px -2px 10px white; */
+  transition: box-shadow 0.1s;
+}
+
+#musicInput:hover{
+  color: white;
+  background-color: black;
+  border: 2px solid #DFBDD6;
+  transition: box-shadow 0.1s;
+  box-shadow: -3px -3px 10px #6359f8, 0 -3px 3px 0px #9c32e2,
+  3px -3px 10px #f36896, 3px 0 5px #ff0b0b, 3px 3px 3px 0px #ff5500,
+  0 3px 0px 0px #ff9500, -3px 3px 3px 0px #ffb700;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  display: none;
+}
+
+input[type="file"]::before {
+  content: "Select Song  ";
+  cursor: pointer;
+}
+
+#songtitle{
+  position: absolute;
+  left: 20px;
+  margin-top: -120px;
+  font-size: 50px;
+  color: #000;
+  text-shadow: 2px 2px 20px white, -2px -2px 20px white;
+}

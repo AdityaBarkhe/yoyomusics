@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Metadata Display</title>
+</head>
+<body>
+    <h1>Song Metadata Display</h1>
+    <input type="file" id="fileInput" accept=".mp3">
+    <button onclick="displaySongData()">Display Data</button>
+    <div id="metadata"></div>
+    <div id="image"></div>
+
+    <script>
+        // ID3.js library for reading ID3 tags
+        var ID3 = (function() {
+            var CHUNK_SIZE = 1024 * 128; // 128 KB
+
+            function readTags(arrayBuffer) {
+                // ID3v2 tags are usually located at the beginning of the file
+                var offset = 0;
+                var tags = {};
+
+                // Read ID3v2 tag header
+                if (String.fromCharCode.apply(null, new Uint8Array(arrayBuffer, 0, 3)) === "ID3") {
+                    offset = 10;
+                    var majorVersion = arrayBuffer[3];
+                    var minorVersion = arrayBuffer[4];
+                    var headerSize = arrayBuffer[6] * 128 * 128 * 128 +
+                                     arrayBuffer[7] * 128 * 128 +
+                                     arrayBuffer[8] * 128 +
+                                     arrayBuffer[9];
+                    offset += headerSize;
+
+                    // Read ID3v2 frames
+                    while (offset < arrayBuffer.byteLength) {
+                        var frameHeader = String.fromCharCode.apply(null, new Uint8Array(arrayBuffer, offset, 4));
+                        var frameSize = arrayBuffer[offset + 4] * 128 * 128 * 128 +
+                                        arrayBuffer[offset + 5] * 128 * 128 +
+                                        arrayBuffer[offset + 6] * 128 +
+                                        arrayBuffer[offset + 7];
+                        offset += 10;
+
+                        // Handle specific frames (e.g., TIT2 for title, TPE1 for artist, etc.)
+                        if (frameHeader === "TIT2") {
+                            tags.title = decodeText(arrayBuffer, offset, frameSize);
+                        } else if (frameHeader === "TPE1") {
+                            tags.artist = decodeText(arrayBuffer, offset, frameSize);
+                        } else if (frameHeader === "TALB") {
+                            tags.album = decodeText(arrayBuffer, offset, frameSize);
+                        } else if (frameHeader === "TCON") {
+                            tags.genre = decodeText(arrayBuffer, offset, frameSize);
+                        } else if (frameHeader === "APIC") {
+                            var mimeType = decodeText(arrayBuffer, offset + 1, frameSize).split('\0')[0];
+                            var imageData = new Uint8Array(arrayBuffer, offset + 1 + mimeType.length + 1, frameSize - mimeType.length - 1 - 1);
+                            tags.picture = {
+                                data: imageData,
+                                format: mimeType
+                            };
+                        }
+
+                        offset += frameSize;
+                    }
+                }
+
+                return tags;
+            }
+
+            function decodeText(arrayBuffer, offset, length) {
+                var bytes = new Uint8Array(arrayBuffer, offset, length);
+                var encodedString = String.fromCharCode.apply(null, bytes);
+                var decodedString;
+
+                // Detect encoding (default is ISO-8859-1)
+                if (encodedString.charCodeAt(0) === 0xFF && encodedString.charCodeAt(1) === 0xFE) {
+                    // UTF-16LE BOM detected
+                    decodedString = decodeUTF16LE(encodedString.substring(2));
+                } else if (encodedString.charCodeAt(0) === 0xFE && encodedString.charCodeAt(1) === 0xFF) {
+                    // UTF-16BE BOM detected
+                    decodedString = decodeUTF16BE(encodedString.substring(2));
+                } else if (encodedString.charCodeAt(0) === 0xEF && encodedString.charCodeAt(1) === 0xBB && encodedString.charCodeAt(2) === 0xBF) {
+                    // UTF-8 BOM detected
+                    decodedString = decodeUTF8(encodedString.substring(3));
+                } else {
+                    // No BOM, assume ISO-8859-1
+                    decodedString = decodeISO88591(encodedString);
+                }
+
+                return decodedString;
+            }
+
+            function decodeUTF16LE(encodedString) {
+                var decodedString = "";
+                for (var i = 0; i < encodedString.length; i += 2) {
+                    decodedString += String.fromCharCode(encodedString.charCodeAt(i) + (encodedString.charCodeAt(i + 1) << 8));
+                }
+                return decodedString;
+            }
+
+            function decodeUTF16BE(encodedString) {
+                var decodedString = "";
+                for (var i = 0; i < encodedString.length; i += 2) {
+                    decodedString += String.fromCharCode((encodedString.charCodeAt(i) << 8) + encodedString.charCodeAt(i + 1));
+                }
+                return decodedString;
+            }
+
+            function decodeUTF8(encodedString) {
+                return decodeURIComponent(escape(encodedString));
+            }
+
+            function decodeISO88591(encodedString) {
+                return decodeURIComponent(escape(encodedString.replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                    return String.fromCharCode(parseInt(p1, 16));
+                })));
+            }
+
+            return {
+                getAllTags: function(arrayBuffer) {
+                    return readTags(arrayBuffer);
+                }
+            };
+        })();
+
+        function displaySongData() {
+            var file = document.getElementById('fileInput').files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(event) {
+                var tags = ID3.getAllTags(event.target.result);
+                displayMetadataAndImage(tags);
+            };
+
+            reader.readAsArrayBuffer(file);
+        }
+
+        function displayMetadataAndImage(tags) {
+            var metadataDiv = document.getElementById('metadata');
+            var imageDiv = document.getElementById('image');
+
+            metadataDiv.innerHTML = '';
+            imageDiv.innerHTML = '';
+
+            var metadata = "<p><b>Title:</b> " + (tags.title || "N/A") + "</p>" +
+                            "<p><b>Artist:</b> " + (tags.artist || "N/A") + "</p>" +
+                            "<p><b>Album:</b> " + (tags.album || "N/A") + "</p>" +
+                            "<p><b>Genre:</b> " + (tags.genre || "N/A") + "</p>";
+
+            metadataDiv.innerHTML = metadata;
+
+            if (tags.picture && tags.picture.data.length > 0) {
+                var base64String = btoa(String.fromCharCode.apply(null, tags.picture.data));
+                var base64 = "data:" + tags.picture.format + ";base64," + base64String;
+
+                var image = new Image();
+                image.src = base64;
+                imageDiv.appendChild(image);
+            }
+        }
+    </script>
+</body>
+</html>
